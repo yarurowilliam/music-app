@@ -1,18 +1,18 @@
-FROM node:18 as build
+# Etapa 1: Construcción
+FROM node:14 AS build
 
 WORKDIR /app
 
-COPY package*.json ./
-
+COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
+RUN npm run build --prod
 
-RUN npm run build
-
+# Etapa 2: Servidor Nginx
 FROM nginx:alpine
 
-COPY --from=build /app/dist/music-app/browser /usr/share/nginx/html
+COPY --from=build /app/dist/music-app /usr/share/nginx/html
 
 EXPOSE 80
 
