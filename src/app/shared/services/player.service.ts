@@ -1,42 +1,53 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Track } from '../../core/models/spotify.models';
 
-export interface PlayerState {
+export interface PlayerState {  // Ensure this is exported
   currentTrack: Track | null;
   isPlaying: boolean;
   volume: number;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class PlayerService {
-  private audio = new Audio();
-  private state = signal<PlayerState>({
+  private state = new BehaviorSubject<PlayerState>({
     currentTrack: null,
     isPlaying: false,
-    volume: 1
+    volume: 0.5
   });
 
-  state$ = this.state;
+  state$ = this.state.asObservable();
 
   playTrack(track: Track): void {
-    if (track.preview_url) {
-      this.audio.src = track.preview_url;
-      this.audio.play();
-      this.state.set({ ...this.state(), currentTrack: track, isPlaying: true });
-    }
+    this.state.next({ ...this.state.value, currentTrack: track, isPlaying: true });
+    const audio = new Audio(track.preview_url);
+    audio.volume = this.state.value.volume;
+    audio.play();
   }
 
-  togglePlay(): void {
-    if (this.state().isPlaying) {
-      this.audio.pause();
-    } else {
-      this.audio.play();
-    }
-    this.state.update(state => ({ ...state, isPlaying: !state.isPlaying }));
+  pauseTrack(): void {
+    this.state.next({ ...this.state.value, isPlaying: false });
+    // Implement pause functionality
+  }
+
+  nextTrack(): void {
+    // Implement next track functionality
   }
 
   setVolume(volume: number): void {
-    this.audio.volume = volume;
-    this.state.update(state => ({ ...state, volume }));
+    this.state.next({ ...this.state.value, volume });
+    // Implement volume change functionality
+  }
+
+  togglePlay(): void {
+    if (this.state.value.isPlaying) {
+      this.pauseTrack();
+    } else {
+      if (this.state.value.currentTrack) {
+        this.playTrack(this.state.value.currentTrack);
+      }
+    }
   }
 }

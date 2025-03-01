@@ -1,37 +1,35 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private tokenKey = 'spotify_token';
+  private tokenKey = 'spotify_access_token';
 
-  login(): void {
-    const { clientId, redirectUri, scopes, authEndpoint } = environment.spotifyConfig;
-    const scopeStr = scopes.join(' ');
-    const url = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopeStr}&show_dialog=true`;
-    window.location.href = url;
-  }
+  constructor(private router: Router) {}
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  setToken(token: string): void {
+  public setAccessToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
 
-  getAuthUrl(): string {
-    const { clientId, redirectUri, scopes, authEndpoint } = environment.spotifyConfig;
-    return `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join(' ')}`;
+  public getAccessToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
-  logout(): void {
+  public isAuthenticated(): boolean {
+    return !!this.getAccessToken();
+  }
+
+  public login(): void {
+    const { clientId, authEndpoint, redirectUri, scopes } = environment.spotifyConfig;
+    const authUrl = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&show_dialog=true`;
+    window.location.href = authUrl;
+  }
+
+  public logout(): void {
     localStorage.removeItem(this.tokenKey);
+    this.router.navigate(['/login']);
   }
 }

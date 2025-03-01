@@ -10,7 +10,8 @@ import { TrackListComponent } from '../../shared/components/track-list/track-lis
   selector: 'app-album',
   standalone: true,
   imports: [CommonModule, LoadingComponent, TrackListComponent],
-  templateUrl: './album.component.html'
+  templateUrl: './album.component.html',
+  styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
   private route = inject(ActivatedRoute);
@@ -19,6 +20,7 @@ export class AlbumComponent implements OnInit {
   album: Album | null = null;
   tracks: Track[] = [];
   isLoading = true;
+  isFollowing: boolean = false;
 
   ngOnInit(): void {
     const albumId = this.route.snapshot.paramMap.get('id');
@@ -36,5 +38,36 @@ export class AlbumComponent implements OnInit {
       },
       error: () => this.isLoading = false
     });
+
+    this.checkIfFollowing(albumId);
+  }
+
+  toggleFollowAlbum(): void {
+    if (this.isFollowing) {
+      this.unfollowAlbum();
+    } else {
+      this.followAlbum();
+    }
+  }
+
+  followAlbum(): void {
+    if (this.album) {
+      this.spotifyService.followAlbum(this.album.id).subscribe(() => {
+        this.isFollowing = true;
+      });
+    }
+  }
+
+  unfollowAlbum(): void {
+    if (this.album) {
+      this.spotifyService.unfollowAlbum(this.album.id).subscribe(() => {
+        this.isFollowing = false;
+      });
+    }
+  }
+
+  private checkIfFollowing(albumId: string): void {
+    // Implement logic to check if the user is following the album
+    // Set this.isFollowing based on the result
   }
 }

@@ -1,0 +1,43 @@
+.album-container {
+  padding: 20px;
+}
+
+.album-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.album-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.album-info h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.tracks-section {
+  margin-top: 20px;
+}
+
+.tracks-list {
+  list-style: none;
+  padding: 0;
+}
+
+.track-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+}

@@ -9,9 +9,19 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {
+        path: 'home',
+        loadComponent: () => import('./features/home/home.component')
+          .then(m => m.HomeComponent)
+      },
+      {
         path: 'search',
         loadComponent: () => import('./features/search/search.component')
           .then(m => m.SearchComponent)
+      },
+      {
+        path: 'library',
+        loadComponent: () => import('./features/library/library.component')
+          .then(m => m.LibraryComponent)
       },
       {
         path: 'artist/:id',
@@ -24,9 +34,14 @@ export const routes: Routes = [
           .then(m => m.AlbumComponent)
       },
       {
+        path: 'playlist/:id',
+        loadComponent: () => import('./features/playlist/playlist.component')
+          .then(m => m.PlaylistComponent)
+      },
+      {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'search'
+        redirectTo: 'home'
       }
     ]
   },

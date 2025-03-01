@@ -17,22 +17,37 @@
   </div>
 
   <div class="grid-container">
-    @for (artist of artists; track artist.id) {
-    <div class="artist-card card-hover cursor-pointer" [routerLink]="['/artist', artist.id]">
-      <div class="relative group">
-        <img [src]="artist.images[0]?.url || '/assets/default-artist.png'" 
-             [alt]="artist.name"
-             class="w-full aspect-square object-cover rounded-lg mb-4"
-        />
-        <div class="absolute right-2 bottom-6 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button class="spotify-button-play">
-            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </button>
+    <ng-container *ngFor="let artist of artists; trackBy: trackByArtistId">
+      <div class="artist-card card-hover cursor-pointer" [routerLink]="['/artist', artist.id]">
+        <div class="relative group">
+          <img [src]="artist.images[0]?.url || '/assets/default-artist.png'" 
+               [alt]="artist.name"
+               class="w-full aspect-square object-cover rounded-lg mb-4"
+          />
+          <div class="absolute right-2 bottom-6 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="spotify-button-play">
+              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="artist-info">
+          <h3>{{ artist.name }}</h3>
+          <p>{{ artist.followers.total | number }} followers</p>
+          <p>{{ artist.genres.join(', ') }}</p>
         </div>
       </div>
+    </ng-container>
+  </div>
+
+  <div class="suggested-playlists">
+    <h2>Suggested Playlists</h2>
+    <div class="playlists-grid">
+      <div *ngFor="let playlist of suggestedPlaylists" class="playlist-card" [routerLink]="['/playlist', playlist.id]">
+        <img [src]="playlist.images[0]?.url || '/assets/default-playlist.png'" alt="{{ playlist.name }}" class="playlist-image">
+        <p>{{ playlist.name }}</p>
+      </div>
     </div>
-    }
   </div>
 </div>

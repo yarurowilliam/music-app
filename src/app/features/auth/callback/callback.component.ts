@@ -18,7 +18,7 @@ export class CallbackComponent implements OnInit {
     const accessToken = hashParams.get('access_token');
 
     if (accessToken) {
-      this.authService.setToken(accessToken);
+      this.authService.setAccessToken(accessToken);
       this.router.navigate(['/search']);
     } else {
       this.router.navigate(['/login']);
