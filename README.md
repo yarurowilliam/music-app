@@ -1,59 +1,96 @@
-# MusicApp
+# Clon de Spotify con Angular 17
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+Una aplicación web que replica las funcionalidades principales de Spotify, construida con Angular 17 y la API de Spotify.
 
-## Development server
+## 🚀 Características
 
-To start a local development server, run:
+- Autenticación con Spotify
+- Búsqueda de artistas
+- Reproducción de previsualizaciones
+- Vista de álbumes y artistas
+- Diseño responsive
+- Interfaz moderna con Tailwind CSS
 
+## 🛠️ Instalación
+
+1. Clonar el repositorio
+```bash
+git clone https://github.com/tu-usuario/spotify-clone-angular.git
+cd spotify-clone-angular
+```
+
+2. Instalar dependencias
+```bash
+npm install
+```
+
+3. Configurar variables de entorno
+   - Renombrar `environment.example.ts` a `environment.ts`
+   - Añadir tu Client ID de Spotify
+
+4. Iniciar el servidor de desarrollo
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+5. Navegar a `http://localhost:4200`
 
-## Code scaffolding
+## 🎨 Diseño UI
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Este proyecto está basado en el siguiente kit de UI de Figma:
+[Spotify UI Kit](https://www.figma.com/community/file/1108011669320248290/spotify-ui-kit)
 
-```bash
-ng generate component component-name
+## 🌿 Estructura de Ramas
+
+- `main`: Rama principal de producción
+- `develop`: Rama de desarrollo
+- `feature/*`: Ramas para nuevas características
+  - `feature/auth`: Autenticación
+  - `feature/player`: Reproductor de música
+  - `feature/search`: Búsqueda
+  - `feature/artist`: Vista de artista
+- `hotfix/*`: Correcciones urgentes
+
+## 📦 Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── core/              # Servicios centrales, guardias e interceptores
+│   ├── features/          # Componentes principales por funcionalidad
+│   └── shared/           # Componentes y utilidades compartidas
+├── assets/              # Recursos estáticos
+└── environments/        # Configuración por entorno
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🤝 Contribución
 
-```bash
-ng generate --help
+1. Crear una rama desde `develop`
+2. Nombrar la rama según la característica: `feature/nombre-caracteristica`
+3. Realizar cambios siguiendo las guías de estilo
+4. Crear Pull Request hacia `develop`
+
+## 📝 Convenciones de Commits
+
+```
+feat: Nueva característica
+fix: Corrección de error
+docs: Cambios en documentación
+style: Cambios de estilo
+refactor: Refactorización de código
+test: Cambios en pruebas
 ```
 
-## Building
+## 🔑 Configuración de Spotify
 
-To build the project run:
+1. Crear una aplicación en [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Configurar URL de redirección: `http://localhost:4200/callback`
+3. Copiar Client ID a environment.ts
 
-```bash
-ng build
-```
+## 👥 Autor
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- [Tu Nombre](https://github.com/tu-usuario)
 
-## Running unit tests
+## 📄 Licencia
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles
