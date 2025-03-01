@@ -6,7 +6,6 @@ Aplicación web que replica las funcionalidades principales de Spotify, construi
 
 - Autenticación con Spotify
 - Búsqueda de artistas
-- Reproductor de música con control de volumen
 - Vista detallada de artistas y álbumes
 - Diseño responsive basado en Tailwind CSS
 - Manejo de estado con Signals de Angular
@@ -30,7 +29,7 @@ export const environment = {
   production: false,
   spotifyApiUrl: 'https://api.spotify.com/v1',
   spotifyConfig: {
-    clientId: '915fb75539bd4c03b6ddbe6ac80a4d0a',
+    clientId: 'TU_CLIENT_ID',
     authEndpoint: 'https://accounts.spotify.com/authorize',
     redirectUri: 'http://localhost:4200/callback',
     scopes: [
@@ -83,6 +82,22 @@ src/
 - RxJS
 - API de Spotify
 - Angular Signals
+
+## 🐳 Docker
+
+Para ejecutar la aplicación en un contenedor Docker, sigue estos pasos:
+
+1. Construye la imagen Docker:
+```bash
+docker build -t music-app .
+```
+
+2. Ejecuta el contenedor:
+```bash
+docker run -p 4200:80 music-app
+```
+
+3. Abre tu navegador y navega a `http://localhost:4200`.
 
 ## 👤 Autor
 
