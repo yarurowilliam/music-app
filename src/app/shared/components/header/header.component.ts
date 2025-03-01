@@ -33,6 +33,7 @@ import { SpotifyService } from '../../../core/services/spotify.service';
                  [alt]="userData.display_name"
             />
             <span class="text-sm font-medium">{{userData.display_name}}</span>
+            <button (click)="logout()" class="text-sm font-medium text-red-500">Logout</button>
           </div>
         }
       </div>
@@ -56,5 +57,9 @@ export class HeaderComponent {
       next: (data) => this.user.set(data),
       error: () => this.authService.logout()
     });
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }

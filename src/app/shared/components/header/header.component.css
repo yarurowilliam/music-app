@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 1rem;
+}
+
+.spotify-button {
+  @apply bg-[#1DB954] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1ed760] transition-colors duration-200;
+}
