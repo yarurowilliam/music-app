@@ -1,0 +1,73 @@
+.playlist-container {
+  padding: 20px;
+}
+
+.playlist-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.playlist-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.playlist-info h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.tracks-section {
+  margin-top: 20px;
+}
+
+.tracks-list {
+  list-style: none;
+  padding: 0;
+}
+
+.track-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.follow-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.heart-icon.filled {
+  fill: currentColor;
+}
+
+.play-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.play-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
