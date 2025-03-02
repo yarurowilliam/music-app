@@ -1,36 +1,46 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SpotifyService } from '../../core/services/spotify.service';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { Artist } from '../../core/models/spotify.models';
 
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './search.component.html'
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
-  private spotifyService = inject(SpotifyService);
-  private searchTerms = new Subject<string>();
-  artists: Artist[] = [];
-  searchTerm = '';
+export class SearchComponent implements OnInit {
+  query: string = '';
+  searchTerm: string = '';
+  artists: any[] = [];
+  suggestedPlaylists: any[] = [];
 
-  constructor() {
-    this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap(term => this.spotifyService.searchArtists(term))
-    ).subscribe(data => {
-      this.artists = data.artists.items;
-    });
+  constructor(private spotifyService: SpotifyService) {}
+
+  ngOnInit(): void {
+    this.loadSuggestedPlaylists();
   }
 
   onSearch(term: string): void {
-    this.searchTerm = term;
-    this.searchTerms.next(term);
+    this.query = term;
+    if (this.query) {
+      this.spotifyService.searchArtists(this.query).subscribe(data => {
+        this.artists = data.artists?.items || [];
+      });
+    } else {
+      this.artists = [];
+    }
+  }
+
+  private loadSuggestedPlaylists(): void {
+    this.spotifyService.getUserPlaylists().subscribe(data => {
+      this.suggestedPlaylists = data.items;
+    });
+  }
+
+  trackByArtistId(index: number, artist: any): string {
+    return artist.id;
   }
 }
