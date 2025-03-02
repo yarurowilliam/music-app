@@ -5,7 +5,11 @@
   "projects": {
     "music-app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -16,40 +20,35 @@
             "outputPath": "dist/music-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets/images",
+                "output": "/assets/images"
               }
             ],
             "styles": [
-              "src/styles.css",
-              "src/output.css"
+              "src/styles.scss"
             ],
-            "scripts": [],
-            "postcss": {
-              "plugins": {
-                "tailwindcss": {},
-                "autoprefixer": {}
-              }
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -66,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "music-app:build:production"
+              "browserTarget": "music-app:build:production"
             },
             "development": {
-              "buildTarget": "music-app:build:development"
+              "browserTarget": "music-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "cbc5b40f-f136-4337-bd22-1f86b797473d"
   }
 }
