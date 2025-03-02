@@ -27,9 +27,16 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/output.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "postcss": {
+              "plugins": {
+                "tailwindcss": {},
+                "autoprefixer": {}
+              }
+            }
           },
           "configurations": {
             "production": {
