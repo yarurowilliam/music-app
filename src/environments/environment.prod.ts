@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   spotifyApiUrl: 'https://api.spotify.com/v1',
   spotifyConfig: {
     clientId: '915fb75539bd4c03b6ddbe6ac80a4d0a',
