@@ -1,0 +1,27 @@
+<div class="main-container">
+  @if (isLoading) {
+    <app-loading></app-loading>
+  } @else if (album) {
+    <div class="album-header spotify-gradient p-8">
+      <div class="flex items-end gap-6">
+        <img [src]="album.images[0]?.url || '/assets/default-album.png'" 
+             [alt]="album.name"
+             class="w-52 h-52 shadow-xl"
+        />
+        <div class="flex-1">
+          <span class="text-sm uppercase">Album</span>
+          <h1 class="text-4xl font-bold mt-2">{{album.name}}</h1>
+          <div class="flex items-center gap-2 mt-4">
+            <span>{{album.artists[0]?.name}}</span>
+            <span class="text-spotify-grey">• {{album.release_date | date:'yyyy'}}</span>
+            <span class="text-spotify-grey">• {{album.total_tracks}} songs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <app-track-list [tracks]="tracks"></app-track-list>
+    </div>
+  }
+</div>
