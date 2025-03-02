@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.component';
+import { provideRouter, withHashLocation } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -55,4 +56,8 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/callback/callback.component')
       .then(m => m.CallbackComponent)
   }
+];
+
+export const routerProvider = [
+  provideRouter(routes, withHashLocation())  // Agregamos withHashLocation para mejor compatibilidad
 ];

@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "4200:80"  # Changed to use port 4200 to match Spotify config
+    container_name: music-app-frontend
     depends_on:
       - backend
 
@@ -15,7 +16,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3000"  # Changed to use port 3001
+    container_name: music-app-backend  # Added explicit container name
     environment:
       - DATABASE_URL=postgres://postgres:password@db:5432/mydatabase
     depends_on:
@@ -23,12 +25,13 @@ services:
 
   db:
     image: postgres:13
+    container_name: music-app-db  # Added explicit container name
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydatabase
     ports:
-      - "5432:5432"
+      - "5433:5432"  # Changed to use port 5433
     volumes:
       - postgres-data:/var/lib/postgresql/data
 

@@ -14,13 +14,16 @@ RUN npm install
 COPY . .
 
 # Build the Angular application
-RUN npm run build --prod
+RUN npm run build -- --configuration production
 
 # Use the official Nginx image to serve the Angular application
 FROM nginx:alpine
 
 # Copy the built Angular application from the build stage
-COPY --from=build /app/dist/your-angular-app /usr/share/nginx/html
+COPY --from=build /app/dist/music-app/browser /usr/share/nginx/html
+
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80

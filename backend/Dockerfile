@@ -4,13 +4,13 @@ FROM node:18-alpine
 # Set the working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
+# Copy package files first
 COPY package*.json ./
 
-# Install the dependencies
-RUN npm install
+# Install dependencies
+RUN npm install --production
 
-# Copy the rest of the application code
+# Then copy the rest of the application
 COPY . .
 
 # Expose port 3000
