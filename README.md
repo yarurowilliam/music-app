@@ -14,7 +14,7 @@ Aplicación web que replica las funcionalidades principales de Spotify, construi
 
 1. Clonar el repositorio
 ```bash
-git clone https://github.com/santiagohm002/Music-app.git
+git clone https://github.com/yarurowilliam/music-app.git
 cd Music-app
 ```
 
