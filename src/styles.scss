@@ -1,0 +1,51 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --spotify-green: #1DB954;
+  --spotify-black: #191414;
+  --spotify-white: #FFFFFF;
+  --spotify-grey: #B3B3B3;
+  --spotify-dark-grey: #282828;
+}
+
+body {
+  @apply bg-[#121212] text-white font-sans;
+}
+
+.spotify-gradient {
+  background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.spotify-button {
+  @apply bg-[#1DB954] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1ed760] transition-colors duration-200;
+}
+
+.card-hover {
+  @apply transition-transform duration-200 hover:scale-105 hover:bg-[#282828];
+}
+
+.nav-link {
+  @apply text-[#B3B3B3] hover:text-white transition-colors duration-200;
+}
+
+.main-container {
+  @apply p-8 max-w-7xl mx-auto;
+}
+
+.grid-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
+}
+
+.artist-card {
+  @apply bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300;
+}
+
+.album-card {
+  @apply bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300;
+}
+
+.track-row {
+  @apply flex items-center p-4 hover:bg-[#282828] transition-all duration-200;
+}
