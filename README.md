@@ -101,4 +101,4 @@ docker run -p 4200:80 music-app
 
 ## 👤 Autor
 
-- [Santiago Hernández](https://github.com/santiagohm002)
+- [William Yaruro](https://github.com/yarurowilliam)
