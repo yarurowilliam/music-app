@@ -1,0 +1,38 @@
+<div class="main-container">
+  @if (artist) {
+    <div class="artist-header mb-8">
+      <div class="flex items-end space-x-6">
+        <img [src]="artist.images[0].url || '/assets/default-artist.png'" 
+             [alt]="artist.name"
+             class="w-60 h-60 rounded-lg shadow-xl"
+        />
+        <div>
+          <h1 class="text-5xl font-bold mb-4">{{artist.name}}</h1>
+          <p class="text-[#B3B3B3]">{{artist.followers.total | number}} followers</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Popular</h2>
+      <app-track-list [tracks]="topTracks"></app-track-list>
+    </section>
+
+    <h2 class="text-2xl font-bold mb-6">Albums</h2>
+    <div class="grid-container">
+      @for (album of albums; track album.id) {
+        <div class="album-card card-hover cursor-pointer"
+             [routerLink]="['/album', album.id]">
+          <img [src]="getImageUrl(album.images)" 
+               [alt]="album.name"
+               class="w-full aspect-square object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-bold mb-2">{{album.name}}</h3>
+          <p class="text-[#B3B3B3]">{{album.release_date | date:'yyyy'}}</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <app-loading></app-loading>
+  }
+</div>
