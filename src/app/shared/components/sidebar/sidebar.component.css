@@ -1,0 +1,99 @@
+.sidebar {
+  width: 240px;
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 120px;
+}
+
+.sidebar-menu {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu a {
+  color: #b3b3b3;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.sidebar-menu a.active,
+.sidebar-menu a:hover {
+  background-color: #282828;
+  color: #fff;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #b3b3b3;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link:hover,
+.nav-link.router-link-active {
+  color: #fff;
+}
+
+.followed-playlists {
+  margin-top: 2rem;
+}
+
+.followed-playlists h3 {
+  color: #b3b3b3;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.followed-playlists ul {
+  list-style: none;
+  padding: 0;
+}
+
+.followed-playlists li {
+  margin-bottom: 0.5rem;
+}
+
+.followed-playlists a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.followed-playlists a:hover {
+  color: #fff;
+}
