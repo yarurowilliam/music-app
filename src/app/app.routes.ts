@@ -59,5 +59,5 @@ export const routes: Routes = [
 ];
 
 export const routerProvider = [
-  provideRouter(routes, withHashLocation())  // Agregamos withHashLocation para mejor compatibilidad
+  provideRouter(routes, withHashLocation())
 ];
