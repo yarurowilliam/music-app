@@ -1,18 +1,27 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
   theme: {
     extend: {
       colors: {
-        'spotify-green': '#1DB954',
-        'spotify-black': '#191414',
-        'spotify-dark': '#121212',
-        'spotify-grey': '#B3B3B3',
-        'spotify-light-grey': '#282828'
+        'spotify-green': '#1ED760',
+        'background-base': '#121212',
+        'background-highlight': '#1A1A1A',
+        'background-press': '#000',
+        'background-elevated-base': '#242424',
+        'background-elevated-highlight': '#2A2A2A',
+      },
+      gridTemplateColumns: {
+        'cards': 'repeat(auto-fill, minmax(180px, 1fr))',
+      },
+      spacing: {
+        'nav': '240px',
+        'header': '64px',
+        'player': '90px'
       }
-    }
+    },
   },
-  plugins: []
+  plugins: [],
 }

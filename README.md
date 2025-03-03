@@ -49,11 +49,28 @@ ng serve
 
 ## 🎨 Diseño
 
-El diseño está inspirado en la interfaz actual de Spotify, implementado con:
-- Tailwind CSS para estilos
-- Sistema de diseño personalizado
-- Modo oscuro nativo
-- Animaciones y transiciones fluidas
+El diseño está inspirado en la interfaz moderna de Spotify, siguiendo el diseño de la comunidad en Figma:
+
+### Referencias de Diseño
+- [Spotify UI Design en Figma](https://www.figma.com/design/zJegBUDw6579hmsXfqMujc/Spotify-UI-(Community))
+  - Diseño moderno y minimalista
+  - Sistema de navegación lateral
+  - Reproductor persistente en la parte inferior
+  - Paleta de colores oscura con acentos verdes
+  - Cards y grids para mostrar contenido
+
+### Características del Diseño
+- **Tema Oscuro**: Diseño con modo oscuro nativo (#121212 como color base)
+- **Sistema de Grid**: Layout responsive con cards de 4 columnas
+- **Navegación**: Sidebar fijo con navegación principal
+- **Player**: Reproductor fijo en la parte inferior
+- **Tipografía**: Sistema de fuentes similar a Spotify
+- **Iconografía**: Set de iconos minimalista
+
+### Inspiración del Proyecto
+- [Diseño Actual de Spotify](https://open.spotify.com/)
+- [Documentación de la API de Spotify](https://developer.spotify.com/documentation/web-api)
+- [Guía de Diseño de Spotify](https://developer.spotify.com/documentation/general/design-and-branding/)
 
 ## 📁 Estructura
 
@@ -66,14 +83,6 @@ src/
 ├── assets/            # Recursos estáticos
 └── environments/      # Configuración
 ```
-
-## 🌿 Ramas
-
-- `main`: Producción
-- `desarrollo`: Desarrollo principal
-- `caracteristica/autenticacion`: Sistema de login
-- `caracteristica/reproductor`: Reproductor de música
-- `caracteristica/busqueda`: Búsqueda de artistas
 
 ## 🛠️ Tecnologías
 
@@ -89,7 +98,7 @@ Para ejecutar la aplicación en un contenedor Docker, sigue estos pasos:
 
 1. Construye la imagen Docker:
 ```bash
-docker build -t music-app .
+docker build -t music-app . 
 ```
 
 2. Ejecuta el contenedor:

@@ -1,17 +1,27 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --spotify-green: #1DB954;
-  --spotify-black: #191414;
-  --spotify-white: #FFFFFF;
-  --spotify-grey: #B3B3B3;
-  --spotify-dark-grey: #282828;
+  --background-base: #121212;
+  --background-highlight: #1a1a1a;
+  --background-press: #000;
+  --background-elevated-base: #242424;
+  --background-elevated-highlight: #2a2a2a;
+  --background-tinted-base: hsla(0,0%,100%,.07);
+  --background-tinted-highlight: hsla(0,0%,100%,.1);
+  --background-tinted-press: hsla(0,0%,100%,.04);
+  --text-base: #fff;
+  --text-subdued: #a7a7a7;
+  --text-bright-accent: #1ed760;
+  --essential-bright-accent: #1ed760;
+  --essential-subdued: #727272;
 }
 
 body {
-  @apply bg-[#121212] text-white font-sans;
+  background-color: var(--background-base);
+  color: var(--text-base);
+  font-family: 'Circular Std', system-ui, sans-serif;
 }
 
 .spotify-gradient {
@@ -19,33 +29,124 @@ body {
 }
 
 .spotify-button {
-  @apply bg-[#1DB954] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1ed760] transition-colors duration-200;
+  background-color: #1DB954;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #1ed760;
+  }
 }
 
 .card-hover {
-  @apply transition-transform duration-200 hover:scale-105 hover:bg-[#282828];
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.05);
+    background-color: #282828;
+  }
 }
 
 .nav-link {
-  @apply text-[#B3B3B3] hover:text-white transition-colors duration-200;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-subdued);
+  transition: color 0.2s;
+  padding: 0.5rem 0;
+  
+  &:hover {
+    color: var(--text-base);
+  }
+  
+  &.active {
+    color: var(--text-base);
+  }
 }
 
 .main-container {
-  @apply p-8 max-w-7xl mx-auto;
+  padding: 2rem;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grid-container {
-  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
-.artist-card {
-  @apply bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300;
-}
-
-.album-card {
-  @apply bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300;
+.artist-card,
+.album-card,
+.card {
+  background-color: var(--background-elevated-base);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: var(--background-elevated-highlight);
+  }
 }
 
 .track-row {
-  @apply flex items-center p-4 hover:bg-[#282828] transition-all duration-200;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #282828;
+  }
+}
+
+.btn-primary {
+  background-color: var(--text-bright-accent);
+  color: black;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn-secondary {
+  border: 1px solid white;
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--background-elevated-base);
+  border-top: 1px solid var(--essential-subdued);
+  padding: 1rem;
 }
