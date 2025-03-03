@@ -4,7 +4,7 @@ export const environment = {
   spotifyConfig: {
     clientId: '915fb75539bd4c03b6ddbe6ac80a4d0a',
     authEndpoint: 'https://accounts.spotify.com/authorize',
-    redirectUri: 'http://localhost:4200/callback',  // Changed back to 4200 to match Spotify config
+    redirectUri: 'http://localhost:4200/callback',
     scopes: [
       'user-read-private',
       'user-read-email',
