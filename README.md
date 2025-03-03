@@ -2,50 +2,71 @@
 
 Aplicación web que replica las funcionalidades principales de Spotify, construida con Angular 17 y la API de Spotify.
 
-## ⚡ Características
+## 📋 Requisitos Previos
 
-- Autenticación con Spotify
-- Búsqueda de artistas
-- Vista detallada de artistas y álbumes
-- Diseño responsive basado en Tailwind CSS
-- Manejo de estado con Signals de Angular
+### Configuración de Spotify Developer (Requerido)
+1. Ve a [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Inicia sesión o crea una cuenta
+3. Crea una nueva aplicación:
+   - Click en "Create App"
+   - Completa el formulario
+   - En "Redirect URI" agrega: `http://localhost:4200/callback`
+   - Guarda la configuración
+4. Obtén las credenciales:
+   - Copia el "Client ID" (lo necesitarás en la instalación)
+   - **IMPORTANTE**: Sin estas credenciales, la aplicación no funcionará
+
+### Requisitos Técnicos
+- Node.js 18 o superior
+- NPM o Yarn
+- Angular CLI 17
 
 ## 🚀 Instalación
 
-1. Clonar el repositorio
+1. Clona el repositorio
 ```bash
 git clone https://github.com/yarurowilliam/music-app.git
-cd Music-app
+cd music-app
 ```
 
-2. Instalar dependencias
+2. Instala las dependencias
 ```bash
 npm install
 ```
 
-3. Configurar variables de entorno
+3. Configura las variables de entorno:
+   - Crea dos archivos basados en `environment.example.ts`:
+     - `src/environments/environment.ts`
+     - `src/environments/environment.prod.ts`
+   - En ambos archivos, reemplaza `YOUR_CLIENT_ID` con tu Client ID de Spotify
+
 ```typescript
 export const environment = {
   production: false,
   spotifyApiUrl: 'https://api.spotify.com/v1',
   spotifyConfig: {
-    clientId: 'TU_CLIENT_ID',
+    clientId: 'YOUR_CLIENT_ID', // <- Reemplaza con tu Client ID
     authEndpoint: 'https://accounts.spotify.com/authorize',
     redirectUri: 'http://localhost:4200/callback',
     scopes: [
       'user-read-private',
       'user-read-email',
       'playlist-read-private',
-      'streaming'
+      'playlist-read-collaborative',
+      'user-library-read',
+      'user-top-read',
+      'user-read-recently-played'
     ]
   }
 };
 ```
 
-4. Iniciar el servidor de desarrollo
+4. Inicia la aplicación
 ```bash
 ng serve
 ```
+
+5. Abre tu navegador en `http://localhost:4200`
 
 ## 🎨 Diseño
 
