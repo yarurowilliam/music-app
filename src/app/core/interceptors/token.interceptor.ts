@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  const token = authService.getToken();
+  const token = authService.getAccessToken();
 
   // Skip adding token for login/auth endpoints
   if (req.url.includes('accounts.spotify.com')) {
